@@ -252,13 +252,13 @@ def merge_sort(origin_data):
 	'''
 
 #基数排序
-def redix_sort(origin_data,radix=10):
+def radix_sort(origin_data,radix=10):
 	'''
 	将数按位数切割成不同的数字，然后按每个位数分别比较
 	基数排序有两种方法：
 	MSD（主位优先法）：从高位开始进行排序，再逐个对各分组按次高位进行子排序
 	LSD（次位优先法）：从低位开始进行排序
-	ridix是基数，可以为任意进制，缺省10
+	radix是基数，可以为任意进制，缺省10
 	此方法为LSD
 	此方法不能处理负数，序列有负数还需进一步改进
 	'''
