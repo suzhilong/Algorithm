@@ -15,11 +15,37 @@
 */
 
 #include <vector>
+#include <cmath>
 
 void radixSort(std::vector<int> &nums, int radix = 10)
 {
 	/*radix是基数，可以为任意进制，缺省10
 	此方法为LSD
 	此方法不能处理负数，序列有负数还需进一步改进*/
+	if (nums.size() < 2)
+		return;
 
+	int maxn = 0;
+	for(int n:nums)
+		maxn = std::max(maxn, n);
+	
+	int K = 0;
+	while(maxn>0){
+		K++;
+		maxn /= radix;
+	}
+
+	for (int i = 1; i <= K;i++){
+		std::vector<std::vector<int> > buckets(radix);
+		for(int n:nums){
+			int j = (n % (int)pow(radix, i)) / (int)pow(radix, i - 1);
+			buckets[j].push_back(n);
+		}
+		nums.clear();
+		for(auto bucket:buckets){
+			for(int n:bucket)
+				nums.push_back(n);
+		}
+	}
+	return;
 }
