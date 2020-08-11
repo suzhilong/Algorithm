@@ -41,7 +41,7 @@ int Partition(std::vector<int> &nums, int start, int end)
 
 void quickSortCore(std::vector<int> &nums, int start, int end)
 {
-	int mid = Partition(nums, 0, nums.size() - 1);
+	int mid = Partition(nums, start, end);
 	if (mid > start)
 		quickSortCore(nums, start, mid - 1);
 	if (mid < end)
