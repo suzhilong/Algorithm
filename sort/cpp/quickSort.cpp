@@ -52,7 +52,7 @@ int Partition(std::vector<int> &nums, int start, int end)
 
 	int idx = start + std::rand() % (end - start + 1);//随机生成一个[start,end]的整数
 	int pivot = nums[idx];
-	nums[idx] = nums[0];//相当于把nums[idx]换到首位
+	nums[idx] = nums[start];//相当于把nums[idx]换到首位
 	while (start < end) {
 		while (start < end && nums[end] >= pivot)
 			end--;
