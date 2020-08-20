@@ -19,6 +19,32 @@
 
 #include <vector>
 
+int Partition2(std::vector<int> &nums, int start, int end)
+{
+	/*另一种实现*/
+    if(nums.size()<2 || start<0 || end>nums.size())
+        return -1;
+    int idx = start + rand() % (end - start + 1);
+    int pivot = nums[idx];
+    nums[idx] = nums[end];
+    int small = start - 1;
+    for (int i = start; i < end; i++)
+    {
+        if (nums[i] < pivot){
+            small++;
+            if(small<i){
+                int tmp = nums[i];
+                nums[i] = nums[small];
+                nums[small] = tmp;
+            }
+        }
+    }
+    small++;
+    nums[end] = nums[small];
+    nums[small] = pivot;
+    return small;
+}
+
 int Partition(std::vector<int> &nums, int start, int end)
 {
 	if (nums.size() < 2 || start<0 || end>nums.size())
